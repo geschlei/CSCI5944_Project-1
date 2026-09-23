@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://4tvfn5xp6cbv"]
+
+[ext_resource type="Texture2D" uid="uid://dw3kbafygaxch" path="res://assets/images/background/1.png" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://ccp5i3fy2uy4x" path="res://assets/images/enemy/fish_1.png" id="3_7mycd"]
+[ext_resource type="Script" uid="uid://dyjo5cyl7b8mr" path="res://assets/scripts/player.gd" id="4_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dpv8cbdqqqxdu" path="res://assets/images/enemy/fish_2.png" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://c0bhv26012hel" path="res://assets/images/worm.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bxpkqfjfg5q5s" path="res://assets/images/worm fall.png" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cbqosa4sayu4b" path="res://icon.svg" id="7_kek77"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_be15j"]
+size = Vector2(16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("4_lquwl")
+region = Rect2(4, 9, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("5_7mycd")
+region = Rect2(14, 4, 17, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_be15j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}],
+"loop": 1,
+"name": &"default_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}],
+"loop": 1,
+"name": &"jump_fall",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds4mj"]
+size = Vector2(134, 132)
+
+[node name="Main" type="Node2D" unique_id=2057909369]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=230655112]
+offset_left = -116.0
+offset_top = -13.0
+offset_right = 1221.0
+offset_bottom = 658.0
+mouse_filter = 2
+texture = ExtResource("1_1bvp3")
+
+[node name="Fish_1" type="Sprite2D" parent="." unique_id=1275831600]
+texture = ExtResource("3_7mycd")
+
+[node name="Fish_2" type="Sprite2D" parent="." unique_id=575850171]
+position = Vector2(0, 13)
+texture = ExtResource("4_272bh")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=2073330196]
+script = ExtResource("4_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1130345642]
+position = Vector2(223, 63.5)
+shape = SubResource("RectangleShape2D_be15j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1849858257]
+position = Vector2(223, 64)
+sprite_frames = SubResource("SpriteFrames_be15j")
+animation = &"default_2"
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=177832413]
+position = Vector2(225, 67)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=125883652]
+position = Vector2(-2, 140)
+texture = ExtResource("7_kek77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=758641718]
+position = Vector2(-1, 142)
+shape = SubResource("RectangleShape2D_ds4mj")
