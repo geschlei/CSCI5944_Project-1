@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dndhthoi5xffy"]
+
+[ext_resource type="Texture2D" uid="uid://cwtdd0pmlibig" path="res://assets/images/hook.png" id="2_n13h4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_be15j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n13h4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sdpe"]
+size = Vector2(2.5012643, 13.333876)
+
+[node name="Hook" type="Area2D" unique_id=1463419895]
+scale = Vector2(4, 4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=837822488]
+position = Vector2(5.9604645e-08, 0)
+scale = Vector2(1.4999999, 1.4999999)
+sprite_frames = SubResource("SpriteFrames_be15j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1398467187]
+position = Vector2(0.5009621, 15.375004)
+rotation = -1.5669487
+scale = Vector2(1.4999999, 1.4999999)
+shape = SubResource("RectangleShape2D_8sdpe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c3ag4aaqpvu8g"]
+
+[ext_resource type="Script" uid="uid://cipfqd7dm0cq5" path="res://assets/scripts/fish.gd" id="1_5fonc"]
+[ext_resource type="Texture2D" uid="uid://ccp5i3fy2uy4x" path="res://assets/images/enemy/fish_1.png" id="1_o85cd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_21hx7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o85cd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds4mj"]
+radius = 5.7509193
+height = 22.99983
+
+[node name="Fish" type="Area2D" unique_id=1463419895]
+scale = Vector2(4, 4)
+script = ExtResource("1_5fonc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=837822488]
+position = Vector2(5.9604645e-08, 0)
+scale = Vector2(1.4999999, 1.4999999)
+sprite_frames = SubResource("SpriteFrames_21hx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1398467187]
+position = Vector2(0.5, -1.25)
+rotation = -1.5669487
+scale = Vector2(1.4999999, 1.4999999)
+shape = SubResource("CapsuleShape2D_ds4mj")
+
+[node name="Timer" type="Timer" parent="." unique_id=1976062943]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

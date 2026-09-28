@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bo6sjg31edehh"]
+
+[ext_resource type="Script" uid="uid://dyjo5cyl7b8mr" path="res://assets/scripts/player.gd" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://c0bhv26012hel" path="res://assets/images/worm.png" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://bxpkqfjfg5q5s" path="res://assets/images/worm fall.png" id="3_sweqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
+size = Vector2(65, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("2_hqtel")
+region = Rect2(4, 9, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(14, 4, 17, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jxqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}],
+"loop": 1,
+"name": &"default_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}],
+"loop": 1,
+"name": &"jump_fall",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D" unique_id=1948840548]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1506118437]
+script = ExtResource("1_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=614060859]
+position = Vector2(101.5, 219)
+shape = SubResource("RectangleShape2D_2hs0m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=805278132]
+position = Vector2(101, 220)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1jxqw")
+animation = &"default_2"
+autoplay = "default"

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://de3shwfhgvuj1"]
+
+[ext_resource type="Script" uid="uid://jni6rwnk0pgh" path="res://assets/scripts/seaweed.gd" id="1_yhc3c"]
+[ext_resource type="Texture2D" uid="uid://26x3t3ph85gp" path="res://assets/images/Tilemap/seaweed.png" id="2_5i2ow"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_be15j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5i2ow")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds4mj"]
+size = Vector2(32.501045, 29.998495)
+
+[node name="Seaweed" type="Area2D" unique_id=1463419895]
+scale = Vector2(4, 4)
+script = ExtResource("1_yhc3c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=837822488]
+position = Vector2(5.9604645e-08, 0)
+scale = Vector2(1.4999999, 1.4999999)
+sprite_frames = SubResource("SpriteFrames_be15j")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1398467187]
+position = Vector2(0.25432998, 3.1250172)
+rotation = -1.5669487
+scale = Vector2(1.4999999, 1.4999999)
+shape = SubResource("RectangleShape2D_ds4mj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
